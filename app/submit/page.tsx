@@ -24,7 +24,7 @@ const page = () => {
                   </p>
                   <p className="mt-2 text-gray-800 dark:text-gray-200">
                     * Have expertise with populations identified in the
-                    foundation's mission
+                    foundation&apos;s mission
                   </p>
                   <p className="mt-2 text-gray-800 dark:text-gray-200">
                     * Demonstrate good governance of all the organization’s
@@ -46,9 +46,9 @@ const page = () => {
             <div className="border hover:border-blue-600 duration-300 rounded-3xl px-6 py-6">
               <p className="text-gray-500">
                 Regardless of the type of project, the proposed solution must
-                fit into the organization's own mission. It must therefore be
-                considered in such a way that it becomes sustainable following
-                the support of the foundation.
+                fit into the organization&apos;s own mission. It must therefore
+                be considered in such a way that it becomes sustainable
+                following the support of the foundation.
               </p>
               <ul role="list" className="space-y-2 pt-6 sm:space-y-4">
                 <li className="flex space-x-3">
@@ -159,8 +159,8 @@ const page = () => {
                     </svg>
                   </span>
                   <span className="text-sm sm:text-base text-gray-500">
-                    The submitted project is an addition to the organization's
-                    service offering
+                    The submitted project is an addition to the
+                    organization&apos;s service offering
                   </span>
                 </li>
               </ul>
@@ -317,9 +317,9 @@ const page = () => {
                   Guidelines for submitting a request for financial support
                 </h2>
                 <p className="my-8 text-gray-600 dark:text-gray-300">
-                  If your organization and your project meet the foundation's
-                  criteria, you are invited to present your initiative by
-                  completing the form .
+                  If your organization and your project meet the
+                  foundation&apos;s criteria, you are invited to present your
+                  initiative by completing the form .
                   <br />
                   <br />
                   If your application is accepted, the foundation team will come

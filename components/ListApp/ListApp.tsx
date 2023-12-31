@@ -17,7 +17,7 @@ const ListApp = () => {
       .catch((error) => {
         console.error("Error fetching submissions:", error);
       });
-  }, [setApplication, endPoint]);
+  }, [setApplication]);
   const [openDetails, setOpenDetails] = useState<any>(null);
 
   return (

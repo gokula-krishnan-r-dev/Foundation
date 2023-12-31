@@ -22,7 +22,7 @@ const Admin = () => {
         setSubmissionCount(fetchedSubmissions.length); // Set total submission count
         setApplication(response.data);
         const approvedSubmissions = fetchedSubmissions.filter(
-          (submission) => submission.status === "approved"
+          (submission: any) => submission.status === "approved"
         );
         setApprovedSubmissionCount(approvedSubmissions.length); // Set count of approved submissions // Set total submission count
         // Set submission count based on fetched data length
@@ -30,7 +30,7 @@ const Admin = () => {
       .catch((error) => {
         console.error("Error fetching submissions:", error);
       });
-  }, []); // Empty dependency array runs this effect only once on mount
+  }, [setTheme]); // Empty dependency array runs this effect only once on mount
   const navigationLinks = [
     { label: "Mail", href: "/examples/mail" },
     { label: "Dashboard", href: "/examples/dashboard" },

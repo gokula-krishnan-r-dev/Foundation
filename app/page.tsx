@@ -20,7 +20,7 @@ export default function Home() {
                 <h1 className="text-gray-900 dark:text-white font-bold text-3xl md:text-6xl xl:text-6xl">
                   Supporting Communities:{" "}
                   <span className="text-primary dark:text-white">
-                    Saputo Foundation's Impact
+                    Saputo Foundation&apos; s Impact
                   </span>
                 </h1>
                 <p className="mt-8 text-gray-700 dark:text-gray-300">

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import SignaturePad from "react-signature-canvas";
+// import SignaturePad from "react-signature-canvas";
 import {
   Form,
   FormControl,
@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { SuccessModel } from "./SuccessModel";
 import { useRef, useState } from "react";
-import { AlertError } from "../Alert/error";
+// import { AlertError } from "../Alert/error";
 import { Textarea } from "../ui/textarea";
 export const SubmitData = [
   {
@@ -197,7 +197,7 @@ export function ProfileForm() {
       setEmailError(response.data.code === 400);
       return response;
     } catch (error) {
-      AlertError("Error submitting form data");
+      // AlertError("Error submitting form data");
     }
   }
 
