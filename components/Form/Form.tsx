@@ -166,10 +166,10 @@ export function ProfileForm() {
   const sigCanvas: any = useRef({});
   const formSchema = z.object(formSchemaObject);
 
-  const clear = () => sigCanvas.current.clear();
+  // const clear = () => sigCanvas.current.clear();
 
-  const save = () =>
-    setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL("image/png"));
+  // const save = () =>
+  // setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL("image/png"));
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -258,7 +258,7 @@ export function ProfileForm() {
               )}
             />
           ))}
-          <button onClick={save}>Add Sign</button>
+          {/* <button onClick={save}>Add Sign</button> */}
           {/* <SignaturePad
             ref={sigCanvas}
             canvasProps={{

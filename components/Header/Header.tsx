@@ -182,7 +182,7 @@ const Header = () => {
                   <div className="h-6 w-2 bg-[#9333ea] astro-ES6RJE63" />
                 </div>
                 <span className="text-2xl font-bold text-gray-900 dark:text-white astro-ES6RJE63">
-                  Astrolus
+                  Logo
                 </span>
               </a>
               <div className="relative flex max-h-10 items-center lg:hidden astro-ES6RJE63">

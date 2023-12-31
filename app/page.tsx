@@ -712,8 +712,8 @@ export default function Home() {
       </main>
 
       <div className="fixed inset-x-6 bottom-6 z-40 mx-auto w-max astro-6MYTB7CN">
-        <a
-          href="https://tailus.gumroad.com/l/astls-premium"
+        <Link
+          href="/submit"
           target="_blank"
           className="flex gap-3 rounded-2xl border border-yellow-900/30 bg-gradient-to-br from-white/50 to-yellow-100 p-3 shadow-2xl shadow-yellow-900/50 backdrop-blur-xl dark:border-white/10 dark:from-gray-800 dark:to-black/70 dark:shadow-primary/50 astro-6MYTB7CN"
         >
@@ -734,7 +734,7 @@ export default function Home() {
             {" "}
             Send Request
           </span>
-        </a>
+        </Link>
       </div>
     </>
   );
