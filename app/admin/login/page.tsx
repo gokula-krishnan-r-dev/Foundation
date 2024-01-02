@@ -4,7 +4,6 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
-import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");

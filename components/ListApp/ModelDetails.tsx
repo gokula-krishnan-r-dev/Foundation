@@ -29,7 +29,6 @@ import { endPoint } from "../dev";
 import { ScrollArea } from "../ui/scroll-area";
 import { SelectStatus } from "../SelectStatus";
 import { DeleteIcon, Trash2Icon } from "lucide-react";
-import { toast } from "react-toastify";
 
 export function ModelDetails({
   Open,

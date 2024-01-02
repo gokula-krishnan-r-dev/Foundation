@@ -26,7 +26,6 @@ export default function RootLayout({
           <Header />
           <SmoothScroll>
             {children}
-
             <Footer />
           </SmoothScroll>
           <div className="fixed inset-x-6 bottom-6 z-40 mx-auto w-max astro-6MYTB7CN">
