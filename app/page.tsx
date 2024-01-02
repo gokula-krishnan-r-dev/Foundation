@@ -1,10 +1,46 @@
+import Button from "@/components/Button";
 import { ProfileForm } from "@/components/Form/Form";
 import MessageForm from "@/components/MessageForm";
+import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
+      <Head>
+        {/* Add meta tags, title, or other head elements here */}
+        <title>Accueil - Fondation Mirella et Lino Saputo</title>
+        <meta
+          name="msapplication-TileImage"
+          content="https://fmlsaputo.org/wp-content/uploads/2022/10/cropped-FML_Saputo_favicon-270x270.png"
+        ></meta>
+        <meta
+          name="description"
+          content="Offrir aux OBNL, plus de flexibilité et de créativité pour mettre leurs idées en action et répondre à des enjeux sociaux précis."
+        ></meta>
+        {/* Other meta tags */}
+        <meta
+          property="og:site_name"
+          content="Fondation Mirella et Lino Saputo"
+        ></meta>
+        <meta property="og:locale" content="fr_FR"></meta>
+        <meta property="og:type" content="website"></meta>
+        <meta
+          property="og:title"
+          content="Accueil - Fondation Mirella et Lino Saputo"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Offrir aux OBNL, plus de flexibilité et de créativité pour mettre leurs idées en action et répondre à des enjeux sociaux précis."
+        ></meta>
+        <meta property="og:url" content="https://fmlsaputo.org/"></meta>
+        <meta
+          property="article:modified_time"
+          content="2023-03-15T18:13:13+00:00"
+        ></meta>
+        <meta name="twitter:card" content="summary_large_image"></meta>
+      </Head>
       <main className="space-y-40  mb-40">
         <div className="relative" id="home">
           <div
@@ -15,7 +51,7 @@ export default function Home() {
             <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600" />
           </div>
           <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-            <div className="relative pt-36 ml-auto">
+            <div className="relative h-screen flex items-center justify-center ml-auto">
               <div className="lg:w-full text-center mx-auto">
                 <h1 className="text-gray-900 dark:text-white font-bold text-3xl md:text-6xl xl:text-6xl">
                   Supporting Communities:{" "}
@@ -31,42 +67,15 @@ export default function Home() {
                   backgrounds in order to increase their impact on the ground.
                 </p>
                 <div className="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
-                  <a
-                    href="#"
-                    className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-[#9333ea] before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-                  >
-                    <span className="relative dark:text-white text-base font-semibold text-black">
-                      Submit a request
-                    </span>
-                  </a>
-                  <a
-                    href="#"
+                  <Button title={" Submit a request"} href="/submit" />
+                  <Link
+                    href="/faq"
                     className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-[#9333ea]/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
                   >
                     <span className="relative text-base font-semibold text-primary dark:text-white">
                       Learn more
                     </span>
-                  </a>
-                </div>
-                <div className="hidden py-8 mt-16 border-y border-gray-100 dark:border-gray-800 sm:flex justify-between">
-                  <div className="text-left">
-                    <h6 className="text-lg font-semibold text-gray-700 dark:text-white">
-                      The lowest price
-                    </h6>
-                    <p className="mt-2 text-gray-500">Some text here</p>
-                  </div>
-                  <div className="text-left">
-                    <h6 className="text-lg font-semibold text-gray-700 dark:text-white">
-                      The fastest on the market
-                    </h6>
-                    <p className="mt-2 text-gray-500">Some text here</p>
-                  </div>
-                  <div className="text-left">
-                    <h6 className="text-lg font-semibold text-gray-700 dark:text-white">
-                      The most loved
-                    </h6>
-                    <p className="mt-2 text-gray-500">Some text here</p>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -106,24 +115,25 @@ export default function Home() {
             <div className="mt-16 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden rounded-3xl border border-gray-100 text-gray-600 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4">
               <div className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
                 <div className="relative space-y-8 py-12 p-8">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
-                    className="w-12"
+                  <Image
+                    src="/people1.jpg"
+                    className="w-full rounded-2xl h-44 object-cover"
                     width={512}
                     height={512}
                     alt="burger illustration"
                   />
                   <div className="space-y-2">
                     <h5 className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-blue-500">
-                      First feature
+                      The people disabled
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
+                      Resilience defines those with disabilities, their strength
+                      illuminates paths, championing inclusion and redefining
+                      barriers into triumphs.
                     </p>
                   </div>
-                  <a
-                    href="#"
+                  <Link
+                    href="/faq"
                     className="flex items-center justify-between group-hover:text-blue-500"
                   >
                     <span className="text-sm">Read more</span>
@@ -139,29 +149,30 @@ export default function Home() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
                 <div className="relative space-y-8 py-12 p-8">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341134.png"
-                    className="w-12"
+                  <Image
+                    src="/old.jpg"
+                    className="w-full rounded-2xl h-44 object-cover"
                     width={512}
                     height={512}
                     alt="burger illustration"
                   />
                   <div className="space-y-2">
                     <h5 className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-blue-500">
-                      Second feature
+                      The people elderly
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
+                      The elderly embody wisdom and experience, their journey a
+                      tapestry of resilience and rich stories, deserving
+                      respect, care, and understanding
                     </p>
                   </div>
-                  <a
-                    href="#"
+                  <Link
+                    href="/faq"
                     className="flex items-center justify-between group-hover:text-blue-500"
                   >
                     <span className="text-sm">Read more</span>
@@ -177,29 +188,30 @@ export default function Home() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
                 <div className="relative space-y-8 py-12 p-8">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341160.png"
-                    className="w-12"
+                  <Image
+                    src="/immigration.jpg"
+                    className="w-full rounded-2xl h-44 object-cover"
                     width={512}
                     height={512}
                     alt="burger illustration"
                   />
                   <div className="space-y-2">
                     <h5 className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-blue-500">
-                      Third feature
+                      The people from immigration
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
+                      Immigrants enrich communities with diverse cultures,
+                      aspirations, and contributions, shaping a vibrant tapestry
+                      that celebrates unity amidst differences.
                     </p>
                   </div>
-                  <a
-                    href="#"
+                  <Link
+                    href="/faq"
                     className="flex items-center justify-between group-hover:text-blue-500"
                   >
                     <span className="text-sm">Read more</span>
@@ -215,7 +227,7 @@ export default function Home() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="group relative bg-gray-50 dark:bg-gray-900 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
@@ -229,15 +241,17 @@ export default function Home() {
                   />
                   <div className="space-y-2">
                     <h5 className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-blue-500">
-                      More features
+                      Is it possible to obtain funding over several years?
                     </h5>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
+                      The foundation supports the same initiative for a maximum
+                      of 5 years. Financial support may, however, be the subject
+                      of more than one request to reach the 5 years. It is then
+                      sufficient to present the project in phases.
                     </p>
                   </div>
                   <a
-                    href="#"
+                    href="/faq"
                     className="flex items-center justify-between group-hover:text-blue-500"
                   >
                     <span className="text-sm">Read more</span>
@@ -308,7 +322,7 @@ export default function Home() {
                   small municipalities as well as in large cities.
                 </p>
                 <div className="divide-y space-y-4 divide-gray-100 dark:divide-gray-800">
-                  <div className="mt-8 flex gap-4 md:items-center">
+                  {/* <div className="mt-8 flex gap-4 md:items-center">
                     <div className="w-12 h-12 flex gap-4 rounded-full bg-indigo-100 dark:bg-indigo-900/20">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -331,8 +345,8 @@ export default function Home() {
                         Asperiores nemo possimus nesciunt quam mollitia.
                       </p>
                     </div>
-                  </div>
-                  <div className="pt-4 flex gap-4 md:items-center">
+                  </div> */}
+                  {/* <div className="pt-4 flex gap-4 md:items-center">
                     <div className="w-12 h-12 flex gap-4 rounded-full bg-teal-100 dark:bg-teal-900/20">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -355,13 +369,13 @@ export default function Home() {
                         Asperiores nemo possimus nesciunt quam mollitia.
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="text-gray-600 dark:text-gray-300" id="reviews">
+        {/* <div className="text-gray-600 dark:text-gray-300" id="reviews">
           <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
             <div className="mb-20 space-y-4 px-6 md:px-0">
               <h2 className="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
@@ -531,7 +545,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="relative py-16">
           <div
             aria-hidden="true"
@@ -547,41 +561,9 @@ export default function Home() {
                   loading="lazy"
                   width={400}
                   height={400}
-                  src="./images/avatars/avatar.webp"
+                  src="/logo.png"
                   alt="member photo"
-                  className="h-8 w-8 rounded-full object-cover"
-                />
-                <img
-                  loading="lazy"
-                  width={200}
-                  height={200}
-                  src="./images/avatars/avatar-2.webp"
-                  alt="member photo"
-                  className="h-12 w-12 rounded-full object-cover"
-                />
-                <img
-                  loading="lazy"
-                  width={200}
-                  height={200}
-                  src="./images/avatars/avatar-3.webp"
-                  alt="member photo"
-                  className="z-10 h-16 w-16 rounded-full object-cover"
-                />
-                <img
-                  loading="lazy"
-                  width={200}
-                  height={200}
-                  src="./images/avatars/avatar-4.webp"
-                  alt="member photo"
-                  className="relative h-12 w-12 rounded-full object-cover"
-                />
-                <img
-                  loading="lazy"
-                  width={200}
-                  height={200}
-                  src="./images/avatars/avatar-1.webp"
-                  alt="member photo"
-                  className="h-8 w-8 rounded-full object-cover"
+                  className="h-auto w-3/5 rounded-full object-cover"
                 />
               </div>
               <div className="mt-6 m-auto space-y-6 md:w-8/12 lg:w-7/12">
@@ -589,32 +571,25 @@ export default function Home() {
                   Get Started now
                 </h1>
                 <p className="text-center text-xl text-gray-600 dark:text-gray-300">
-                  Be part of millions people around the world using tailus in
-                  modern User Interfaces.
+                  Do you have questions regarding a possible partnership with
+                  the foundation? Questions about how we work?
                 </p>
                 <div className="flex flex-wrap justify-center gap-6">
-                  <a
-                    href="#"
-                    className="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-[#9333ea] before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-                  >
-                    <span className="relative text-base font-semibold  text-white dark:text-black dark:text-dark">
-                      Get Started
-                    </span>
-                  </a>
-                  <a
-                    href="#"
+                  <Button title={" Submit a request"} href="/submit" />
+                  <Link
+                    href="/faq"
                     className="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-[#9333ea]/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
                   >
                     <span className="relative text-base font-semibold text-primary dark:text-white">
-                      More about
+                      Questions ?
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div id="blog">
+        {/* <div id="blog">
           <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
             <div className="mb-12 space-y-2 text-center">
               <h2 className="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white">
@@ -707,35 +682,21 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <MessageForm />
-        </div>
+          <div className="text-center mt-12">
+            <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
+              Receive news from the foundation
+            </h1>
+            <p className="mt-1 text-gray-600 dark:text-gray-400">
+              Would you like to discover the calls for projects and follow the
+              foundation&apos;s news?
+            </p>
+            <p className="mt-1 text-gray-600 dark:text-gray-400">
+              Subscribe to the contact list
+            </p>
+          </div>
+        </div> */}
+        <MessageForm />
       </main>
-
-      <div className="fixed inset-x-6 bottom-6 z-40 mx-auto w-max astro-6MYTB7CN">
-        <Link
-          href="/submit"
-          target="_blank"
-          className="flex gap-3 rounded-2xl border border-yellow-900/30 bg-gradient-to-br from-white/50 to-yellow-100 p-3 shadow-2xl shadow-yellow-900/50 backdrop-blur-xl dark:border-white/10 dark:from-gray-800 dark:to-black/70 dark:shadow-primary/50 astro-6MYTB7CN"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="h-5 w-5 text-yellow-600 dark:text-yellow-500 astro-6MYTB7CN"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z"
-              clipRule="evenodd"
-              className="astro-6MYTB7CN"
-            />
-          </svg>
-          <span className="text-sm font-semibold tracking-wide text-yellow-900 dark:text-white astro-6MYTB7CN">
-            {" "}
-            Send Request
-          </span>
-        </Link>
-      </div>
     </>
   );
 }

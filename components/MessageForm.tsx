@@ -1,12 +1,87 @@
+"use client";
 import React from "react";
+import { Resolver, SubmitHandler, useForm } from "react-hook-form";
+import { endPoint } from "./dev";
+import { toast } from "sonner";
+import Link from "next/link";
 
 const MessageForm = () => {
+  interface FormField {
+    label: string;
+    name: string;
+    type: string;
+    placeholder: string;
+  }
+
+  const initialFields: FormField[] = [
+    {
+      label: "Contact Person",
+      name: "contactPerson",
+      type: "text",
+      placeholder: "Enter Contact Person's Name",
+    },
+    {
+      label: "Name of Organization",
+      name: "organizationName",
+      type: "text",
+      placeholder: "Enter Organization Name",
+    },
+    {
+      label: "Email",
+      name: "email",
+      type: "email",
+      placeholder: "Enter Email Address",
+    },
+    {
+      label: "Message",
+      name: "message",
+      type: "textarea",
+      placeholder: "Enter Your Message",
+    },
+  ];
+
+  type FormValues = {
+    contactPerson: string;
+    organizationName: string;
+    email: string;
+    message: string;
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
+  const [loading, setLoading] = React.useState(false);
+  const onSubmit: SubmitHandler<FormValues> = async (data, { reset }: any) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${endPoint}/submitFormData`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success("Form data sent successfully");
+        reset();
+      } else {
+        toast.error("Failed to submit form data");
+      }
+    } catch (error) {
+      console.error("Error submitting form data:", error);
+      // Handle errors if there's an exception during submission
+    }
+    setLoading(false);
+  };
   return (
     <>
       {/* Contact Us */}
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <div className="max-w-2xl pt-24 lg:max-w-5xl mx-auto">
-          <div className="text-center">
+        <div className="max-w-2xl pt-0 lg:max-w-5xl mx-auto">
+          {/* <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
               Receive news from the foundation
             </h1>
@@ -17,103 +92,70 @@ const MessageForm = () => {
             <p className="mt-1 text-gray-600 dark:text-gray-400">
               Subscribe to the contact list
             </p>
-          </div>
+          </div> */}
           <div className="mt-12 grid items-center lg:grid-cols-2 gap-6 lg:gap-16">
             {/* Card */}
             <div className="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-gray-700">
               <h2 className="mb-8 text-xl font-semibold text-gray-800 dark:text-gray-200">
                 Fill in the form
               </h2>
-              <form>
-                <div className="grid gap-4">
-                  {/* Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="hs-firstname-contacts-1"
-                        className="sr-only"
-                      >
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        name="hs-firstname-contacts-1"
-                        id="hs-firstname-contacts-1"
-                        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                        placeholder="First Name"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="hs-lastname-contacts-1"
-                        className="sr-only"
-                      >
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        name="hs-lastname-contacts-1"
-                        id="hs-lastname-contacts-1"
-                        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                        placeholder="Last Name"
-                      />
-                    </div>
+              {loading && <div>Loading...</div>}
+              {!loading && (
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="grid gap-4">
+                    {initialFields.map((field: any) => (
+                      <div>
+                        <label
+                          htmlFor="hs-email-contacts-1"
+                          className="sr-only"
+                        >
+                          {field.label}
+                        </label>
+                        {field.type === "textarea" ? (
+                          <textarea
+                            rows={7}
+                            {...register(field.name, { required: true })}
+                            name={field.name}
+                            id={field.name}
+                            autoComplete="email"
+                            className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                            placeholder={field.placeholder}
+                          />
+                        ) : (
+                          <input
+                            {...register(field.name, { required: true })}
+                            type={field.type}
+                            name={field.name}
+                            id={field.name}
+                            autoComplete="email"
+                            className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                            placeholder={field.placeholder}
+                          />
+                        )}
+                        {errors?.[field.name] && (
+                          <span className="text-sm text-red-600">
+                            This field is required
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 grid">
+                    <button
+                      type="submit"
+                      className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                    >
+                      I want to receive news
+                    </button>
                   </div>
                   {/* End Grid */}
-                  <div>
-                    <label htmlFor="hs-email-contacts-1" className="sr-only">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="hs-email-contacts-1"
-                      id="hs-email-contacts-1"
-                      autoComplete="email"
-                      className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      placeholder="Email"
-                    />
+                  <div className="mt-3 text-center">
+                    <p className="text-sm text-gray-500">
+                      We&apos;ll get back to you in 1-2 business days.
+                    </p>
                   </div>
-                  <div>
-                    <label htmlFor="hs-phone-number-1" className="sr-only">
-                      Phone Number
-                    </label>
-                    <input
-                      type="text"
-                      name="hs-phone-number-1"
-                      id="hs-phone-number-1"
-                      className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      placeholder="Phone Number"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="hs-about-contacts-1" className="sr-only">
-                      Details
-                    </label>
-                    <textarea
-                      id="hs-about-contacts-1"
-                      name="hs-about-contacts-1"
-                      rows={4}
-                      className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      placeholder="Details"
-                      defaultValue={""}
-                    />
-                  </div>
-                </div>
-                {/* End Grid */}
-                <div className="mt-4 grid">
-                  <button
-                    type="submit"
-                    className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                  >
-                    I want to receive news
-                  </button>
-                </div>
-                <div className="mt-3 text-center">
-                  <p className="text-sm text-gray-500">
-                    We&apos;ll get back to you in 1-2 business days.
-                  </p>
-                </div>
-              </form>
+                </form>
+              )}
             </div>
             {/* End Card */}
             <div className="divide-y divide-gray-200 dark:divide-gray-800">
@@ -147,27 +189,12 @@ const MessageForm = () => {
                     href="#"
                   >
                     Contact support
-                    <svg
-                      className="flex-shrink-0 w-2.5 h-2.5 transition ease-in-out group-hover:translate-x-1"
-                      width={16}
-                      height={16}
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M0.975821 6.92249C0.43689 6.92249 -3.50468e-07 7.34222 -3.27835e-07 7.85999C-3.05203e-07 8.37775 0.43689 8.79749 0.975821 8.79749L12.7694 8.79748L7.60447 13.7596C7.22339 14.1257 7.22339 14.7193 7.60447 15.0854C7.98555 15.4515 8.60341 15.4515 8.98449 15.0854L15.6427 8.68862C16.1191 8.23098 16.1191 7.48899 15.6427 7.03134L8.98449 0.634573C8.60341 0.268455 7.98555 0.268456 7.60447 0.634573C7.22339 1.00069 7.22339 1.59428 7.60447 1.9604L12.7694 6.92248L0.975821 6.92249Z"
-                        fill="currentColor"
-                      />
-                    </svg>
                   </a>
                 </div>
               </div>
               {/* End Icon Block */}
               {/* Icon Block */}
-              <div className="flex gap-x-7 py-6">
+              {/* <div className="flex gap-x-7 py-6">
                 <svg
                   className="flex-shrink-0 w-6 h-6 mt-1.5 text-gray-800 dark:text-gray-200"
                   xmlns="http://www.w3.org/2000/svg"
@@ -212,10 +239,10 @@ const MessageForm = () => {
                     </svg>
                   </a>
                 </div>
-              </div>
+              </div> */}
               {/* End Icon Block */}
               {/* Icon Block */}
-              <div className=" flex gap-x-7 py-6">
+              {/* <div className=" flex gap-x-7 py-6">
                 <svg
                   className="flex-shrink-0 w-6 h-6 mt-1.5 text-gray-800 dark:text-gray-200"
                   xmlns="http://www.w3.org/2000/svg"
@@ -261,7 +288,7 @@ const MessageForm = () => {
                     </svg>
                   </a>
                 </div>
-              </div>
+              </div> */}
               {/* End Icon Block */}
               {/* Icon Block */}
               <div className=" flex gap-x-7 py-6">
@@ -287,12 +314,12 @@ const MessageForm = () => {
                   <p className="mt-1 text-sm text-gray-500">
                     If you wish to write us an email instead please use
                   </p>
-                  <a
+                  <Link
                     className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                     href="#"
                   >
-                    example@site.com
-                  </a>
+                    Info@fmlsaputo.org
+                  </Link>
                 </div>
               </div>
               {/* End Icon Block */}

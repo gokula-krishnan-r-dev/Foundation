@@ -1,9 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { ModeToggle } from "../ThemeMode/ModeToggle";
-import Image from "next/image";
-import { TwitterLogoIcon } from "@radix-ui/react-icons";
-import { FacebookIcon } from "lucide-react";
 import Link from "next/link";
 
 const Header = () => {
@@ -169,22 +165,17 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4 astro-ES6RJE63">
             <div className="relative z-20 flex w-full justify-between md:px-0 lg:w-max astro-ES6RJE63">
-              <a
-                href="/#home"
+              <Link
+                href="/"
                 aria-label="logo"
                 className="flex items-center space-x-2 astro-ES6RJE63"
               >
-                <div
-                  aria-hidden="true"
-                  className="flex space-x-1 astro-ES6RJE63"
-                >
-                  <div className="h-4 w-4 rounded-full bg-gray-900 dark:bg-white astro-ES6RJE63" />
-                  <div className="h-6 w-2 bg-[#9333ea] astro-ES6RJE63" />
-                </div>
-                <span className="text-2xl font-bold text-gray-900 dark:text-white astro-ES6RJE63">
-                  Logo
-                </span>
-              </a>
+                <img
+                  src="/logo.png"
+                  className="w-18 h-14 object-cover"
+                  alt=""
+                />
+              </Link>
               <div className="relative flex max-h-10 items-center lg:hidden astro-ES6RJE63">
                 <button
                   aria-label="humburger"
@@ -216,52 +207,61 @@ const Header = () => {
               <div className="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0 astro-ES6RJE63">
                 <ul className="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm astro-ES6RJE63">
                   <li className="astro-ES6RJE63">
-                    <a
-                      href="/#features"
+                    <Link
+                      href="/"
                       className="hover:text-primary block transition dark:hover:text-white md:px-4 astro-ES6RJE63"
                     >
-                      <span className="astro-ES6RJE63">Features</span>
+                      <span className="astro-ES6RJE63">Welcome</span>
+                    </Link>
+                  </li>
+                  <li className="astro-ES6RJE63">
+                    <a
+                      href="/about"
+                      className="hover:text-primary block transition dark:hover:text-white md:px-4 astro-ES6RJE63"
+                    >
+                      <span className="astro-ES6RJE63">About</span>
                     </a>
                   </li>
                   <li className="astro-ES6RJE63">
                     <a
-                      href="/#solution"
+                      href="/submit"
                       className="hover:text-primary block transition dark:hover:text-white md:px-4 astro-ES6RJE63"
                     >
-                      <span className="astro-ES6RJE63">Solution</span>
+                      <span className="astro-ES6RJE63">Submit a request</span>
                     </a>
                   </li>
                   <li className="astro-ES6RJE63">
                     <a
-                      href="/#reviews"
-                      className="hover:text-primary block transition dark:hover:text-white md:px-4 astro-ES6RJE63"
-                    >
-                      <span className="astro-ES6RJE63">Reviews</span>
-                    </a>
-                  </li>
-                  <li className="astro-ES6RJE63">
-                    <a
-                      href="https://tailus.gumroad.com/l/astls-premium"
+                      href="/faq"
                       target="_blank"
                       className="flex gap-2 font-semibold text-gray-700 transition hover:text-primary dark:text-white dark:hover:text-white md:px-4 astro-ES6RJE63"
                     >
-                      <span className="astro-ES6RJE63">Premium</span>
+                      <span className="astro-ES6RJE63">Question?</span>
                       <span className="flex rounded-full bg-[#9333ea]/20 px-1.5 py-0.5 text-xs tracking-wider text-purple-700 dark:bg-white/10 dark:text-orange-300 astro-ES6RJE63">
                         {" "}
                         new
                       </span>
                     </a>
                   </li>
+                  <li className="astro-ES6RJE63">
+                    <a
+                      href="/contact"
+                      // target="_blank"
+                      className="flex gap-2 font-semibold text-gray-700 transition hover:text-primary dark:text-white dark:hover:text-white md:px-4 astro-ES6RJE63"
+                    >
+                      <span className="astro-ES6RJE63">Contact</span>
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div className="mt-12 lg:mt-0 astro-ES6RJE63">
                 <a
-                  href="/register"
+                  href="/submit"
                   className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-[#9333ea] before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-ES6RJE63"
                 >
                   <span className="relative text-sm font-semibold dark:text-white text-black astro-ES6RJE63">
                     {" "}
-                    Get Started
+                    Submit a request
                   </span>
                 </a>
               </div>

@@ -6,7 +6,18 @@ const page = () => {
   return (
     <div>
       <div className="py-12 pt-24">
-        <h2>Submit a request</h2>
+        <div className="flex items-center justify-center flex-col">
+          <h2 className="text-6xl font-bold px-6 text-center">
+            Submit a request
+          </h2>
+          <p className="text-center text-base font-medium max-w-[80%] mt-4">
+            Every day, a large number of organizations help provide services to
+            the elderly, disabled people and people from immigrant backgrounds.
+            The foundation financially supports initiatives in these
+            organizations. You are invited to read the foundation's criteria and
+            terms in order to submit a donation request.
+          </p>
+        </div>
       </div>
       <section>
         {/* Features */}
