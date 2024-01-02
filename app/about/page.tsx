@@ -28,8 +28,8 @@ const AboutPage = () => {
             </p>
             <p className="pb-6 px-6 max-w-3xl">
               From the beginning of the company, the Saputo couple, faithful to
-              their parents' model of benevolence, became involved in what was
-              then called charity.
+              their parents&lsquo; model of benevolence, became involved in what
+              was then called charity.
             </p>
             {/* Grid */}
             <div className="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-center">
@@ -821,8 +821,8 @@ const AboutPage = () => {
               </div>
               <p className="mt-4">
                 {" "}
-                The foundation's approach? Use its skills and resources to be
-                one of the actors present among the populations it supports .
+                The foundation&lsquo;s approach? Use its skills and resources to
+                be one of the actors present among the populations it supports .
                 Always in line with deep-rooted family values.
               </p>
             </div>
@@ -1298,9 +1298,9 @@ const AboutPage = () => {
                     <p>
                       The foundation team is influenced by the extraordinary
                       work done on the ground every day by the organizations.
-                      The foundation's support is intended to be a lever and a
-                      bridge towards direct access to services for selected
-                      populations.
+                      The foundation&lsquo;s support is intended to be a lever
+                      and a bridge towards direct access to services for
+                      selected populations.
                     </p>
                     <br />
                     <p>

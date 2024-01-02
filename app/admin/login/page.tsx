@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,9 +15,7 @@ const Login = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!email || !password || !role || !secretCode) {
-      toast.error("Please fill in all fields!", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      toast.error("Please fill in all fields!");
       return;
     }
     try {
@@ -30,20 +29,14 @@ const Login = () => {
       console.log(response, "response");
 
       if (response.status === 201) {
-        toast.success(response.data.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
+        toast.success(response.data.message);
         router.push("/admin");
       } else {
         console.error("Login failed");
-        toast.error(response.data.error || "Login failed!", {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
+        toast.error(response.data.error || "Login failed!");
       }
     } catch (error) {
-      toast.error("Something wrong while logging in!", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      toast.error("Something wrong while logging in!");
     }
   };
 

@@ -29,6 +29,7 @@ import { endPoint } from "../dev";
 import { ScrollArea } from "../ui/scroll-area";
 import { SelectStatus } from "../SelectStatus";
 import { DeleteIcon, Trash2Icon } from "lucide-react";
+import { toast } from "sonner";
 
 export function ModelDetails({
   Open,
@@ -100,9 +101,7 @@ export function ModelDetails({
                   if (response.data.code === 200) {
                     window.location.reload();
                   }
-                  toast.success(response.data.message, {
-                    position: toast.POSITION.BOTTOM_RIGHT,
-                  });
+                  toast.success(response.data.message);
                 } catch (error) {
                   console.error("Error sending email:", error);
                 }

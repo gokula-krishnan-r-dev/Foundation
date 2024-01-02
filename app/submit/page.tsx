@@ -14,8 +14,8 @@ const page = () => {
             Every day, a large number of organizations help provide services to
             the elderly, disabled people and people from immigrant backgrounds.
             The foundation financially supports initiatives in these
-            organizations. You are invited to read the foundation's criteria and
-            terms in order to submit a donation request.
+            organizations. You are invited to read the foundation&lsquo;s
+            criteria and terms in order to submit a donation request.
           </p>
         </div>
       </div>

@@ -51,7 +51,7 @@ const MessageForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<any>();
   const [loading, setLoading] = React.useState(false);
   const onSubmit: SubmitHandler<FormValues> = async (data, { reset }: any) => {
     setLoading(true);
@@ -103,8 +103,8 @@ const MessageForm = () => {
               {!loading && (
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="grid gap-4">
-                    {initialFields.map((field: any) => (
-                      <div>
+                    {initialFields.map((field: any, index) => (
+                      <div key={index}>
                         <label
                           htmlFor="hs-email-contacts-1"
                           className="sr-only"
@@ -132,7 +132,7 @@ const MessageForm = () => {
                             placeholder={field.placeholder}
                           />
                         )}
-                        {errors?.[field.name] && (
+                        {errors && field.name && errors[field.name] && (
                           <span className="text-sm text-red-600">
                             This field is required
                           </span>

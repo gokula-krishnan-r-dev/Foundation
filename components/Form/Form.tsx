@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import axios from "axios";
-import SignatureCanvas from "react-signature-canvas";
+// import SignatureCanvas from "react-signature-canvas";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -350,11 +350,11 @@ export function ProfileForm() {
             )}
           </div>
         ))}
-        <h2></h2>
-        <SignatureCanvas
+        {/* <h2></h2> */}
+        {/* <SignatureCanvas
           penColor="blue"
           canvasProps={{ className: "sigCanvas" }}
-        />
+        /> */}
         <button
           type="submit"
           className="group mt-8  inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-lg focus:outline-none ring-slate-700 dark:text-white text-black hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white"
