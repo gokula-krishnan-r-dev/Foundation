@@ -13,28 +13,32 @@ export default function AdminLayout({
   const [userData, setUserData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const id: any | undefined = localStorage.getItem("token");
   useEffect(() => {
-    if (id) {
-      // Make a GET request to fetch user data based on the ID
-      axios
-        .get(`${endPoint}/admin/${id}`)
-        .then((response) => {
-          // Handle successful response
-          setUserData(response.data);
-        })
-        .catch((err) => {
-          // Handle error
-          toast.error(err.message || "An error occurred");
-          setError(err.message || "An error occurred");
-        });
+    if (typeof window !== "undefined") {
+      const id: any | undefined = localStorage.getItem("token");
+      if (id) {
+        // Make a GET request to fetch user data based on the ID
+        axios
+          .get(`${endPoint}/admin/${id}`)
+          .then((response) => {
+            // Handle successful response
+            setUserData(response.data);
+          })
+          .catch((err) => {
+            // Handle error
+            toast.error(err.message || "An error occurred");
+            setError(err.message || "An error occurred");
+          });
+      }
     }
   }, []); // Empty dependency array ensures this effect runs only once on component mount
 
   // Render based on the presence of user data and matching ID
-
-  if (!id) {
-    return <Login />;
+  if (typeof window !== "undefined") {
+    const id: any | undefined = localStorage.getItem("token");
+    if (!id) {
+      return <Login />;
+    }
   }
   if (!userData) {
     // If userData is not fetched yet, return a loading state or spinner
