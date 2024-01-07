@@ -24,8 +24,9 @@ export const json = {
 };
 
 import { endPoint } from "../dev";
-import { SuccessModel } from "./SuccessModel";
 import { toast } from "sonner";
+import { useDisclosure } from "@mantine/hooks";
+import SuccessModel from "./SuccessModel";
 export const SubmitData = [
   {
     tag: "firstname",
@@ -206,12 +207,11 @@ export function ProfileForm() {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [addsign, setAddsign] = useState<any>("");
   console.log(addsign?.signature, "addsign");
-
+  const [opened, { open, close }] = useDisclosure(false);
   function SurveyComponent() {
     const survey = new Model(json);
     survey.onComplete.add((sender, options) => {
       console.log(JSON.stringify(sender.data, null, 3));
-      // setAddsign(JSON.stringify(sender.data, null, 3));
     });
     return (
       <div className="absolute w-full bottom-44">
@@ -306,6 +306,7 @@ export function ProfileForm() {
       </div>
     );
   }
+
   return (
     <div className="relative">
       <form onSubmit={handleSubmit(onSubmit)}>

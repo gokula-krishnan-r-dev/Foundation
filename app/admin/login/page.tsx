@@ -26,11 +26,13 @@ const Login = () => {
         secretCode: secretCode,
       });
 
-      console.log(response, "response");
+      console.log(response?.data?.admin, "response");
 
-      if (response.status === 201) {
+      if (response.data.code === 201 || response.data.code === 200) {
+        localStorage.setItem("token", response?.data?.admin?._id);
         toast.success(response.data.message);
         router.push("/admin");
+        window.location.href = "/admin";
       } else {
         console.error("Login failed");
         toast.error(response.data.error || "Login failed!");
