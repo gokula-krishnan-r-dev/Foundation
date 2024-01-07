@@ -184,7 +184,7 @@ const page = () => {
                 href="https://fmlsaputo.org/wp-content/uploads/2023/08/Types-demandes_aout23_VF.pdf"
                 className="relative my-8 flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-[#9333ea] before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-ES6RJE63"
               >
-                <span className="relative text-sm font-semibold dark:text-white text-black astro-ES6RJE63">
+                <span className="relative text-sm font-semibold dark:text-white text-white astro-ES6RJE63">
                   {" "}
                   DOWNLOAD DOCUMENT
                 </span>
@@ -304,7 +304,7 @@ const page = () => {
             <div className="space-y-6 justify-between text-gray-600 md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
               <div className="md:5/12 lg:w-1/2">
                 <div className="border py-6  rounded-3xl px-6 ">
-                  <p className="text-gray-300">
+                  <p className="text-gray-500">
                     {" "}
                     Would you like to prepare your donation request in
                     collaboration with your team? Use the working document
@@ -316,7 +316,7 @@ const page = () => {
                     href="https://fmlsaputo.org/wp-content/uploads/2023/08/Types-demandes_aout23_VF.pdf"
                     className="relative my-8 flex h-10 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-[#9333ea] before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max astro-ES6RJE63"
                   >
-                    <span className="relative text-sm font-semibold dark:text-white text-black astro-ES6RJE63">
+                    <span className="relative text-sm font-semibold dark:text-white text-white astro-ES6RJE63">
                       {" "}
                       DOWNLOAD DOCUMENT
                     </span>

@@ -157,7 +157,7 @@ const ListApp = () => {
                           status={value.status}
                           id={value._id}
                           email={value.email}
-                          Open={value._id === openDetails}
+                          Open={value._id === openDetails ? true : false}
                           submission={value}
                           setOpenDetails={setOpenDetails}
                         />

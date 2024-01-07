@@ -1,242 +1,177 @@
 import React from "react";
 import { ModeToggle } from "../ThemeMode/ModeToggle";
-
+import Image from "next/image";
+import Link from "next/link";
+const menuItems = [
+  {
+    id: 1,
+    label: "Home",
+    link: "/",
+  },
+  {
+    id: 2,
+    label: "About",
+    link: "/",
+  },
+  {
+    id: 3,
+    label: "Donation request",
+    link: "/",
+  },
+  {
+    id: 4,
+    label: "FAQ",
+    link: "/",
+  },
+  {
+    id: 5,
+    label: "Contact",
+    link: "/",
+  },
+  {
+    id: 6,
+    label: "Accessibility",
+    link: "/",
+  },
+];
 const Footer = () => {
   return (
-    <footer className="bg-[#FAFAFA] pb-[env(safe-area-inset-bottom)] relative dark:bg-[#111111]">
-      <div className="absolute top-0 h-12 w-full -translate-y-full bg-gradient-to-t from-[#FAFAFA] to-transparent dark:from-black pointer-events-none" />
-      <div className="mx-auto max-w-[90rem] py-2 px-4 flex gap-2 flex">
-        <ModeToggle />
-      </div>
-      <hr className="dark:border-neutral-800" />
-      <div className="mx-auto max-w-[90rem] py-12 flex justify-center md:justify-center text-black dark:text-white pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
-        <div aria-labelledby="footer-heading" className="w-full">
-          <h2 className="sr-only" id="footer-heading">
-            Footer
-          </h2>
-          <div className="w-full py-8 mx-auto">
-            <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-              <div className="grid grid-cols-1 gap-8 xl:col-span-2">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 md:gap-8">
-                  <div className="mt-12 md:!mt-0">
-                    <h3 className="text-sm text-black dark:text-white">
-                      Resources
-                    </h3>
-                    <ul className="mt-4 space-y-1.5 list-none ml-0">
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="/blog"
-                        >
-                          Blog
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="https://github.com/vercel/turbo/releases"
-                        >
-                          Releases
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-12 md:!mt-0">
-                    <h3 className="text-sm text-black dark:text-white">
-                      Turborepo
-                    </h3>
-                    <ul className="mt-4 space-y-1.5 list-none ml-0">
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="/repo/docs"
-                        >
-                          Documentation
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="/repo/docs/reference/command-line-reference"
-                        >
-                          API Reference
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="/repo/docs/faq"
-                        >
-                          FAQ
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-12 md:!mt-0">
-                    <h3 className="text-sm text-black dark:text-white">
-                      Turbopack
-                    </h3>
-                    <ul className="mt-4 space-y-1.5 list-none ml-0">
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="/pack/docs"
-                        >
-                          Documentation
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="/pack/docs/features"
-                        >
-                          Features
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-12 md:!mt-0">
-                    <h3 className="text-sm text-black dark:text-white">
-                      Company
-                    </h3>
-                    <ul className="mt-4 space-y-1.5 list-none ml-0">
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="https://vercel.com"
-                        >
-                          Vercel
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="https://vercel.com/oss?utm_source=turbo.build&utm_medium=referral&utm_campaign=footer-ossLink"
-                        >
-                          Open Source Software
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="https://vercel.com/solutions/turborepo?utm_source=turbo.build&utm_medium=referral&utm_campaign=footer-enterpriseLink"
-                        >
-                          Contact Sales
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="https://x.com/vercel"
-                        >
-                          X
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-12 md:!mt-0">
-                    <h3 className="text-sm text-black dark:text-white">
-                      Legal
-                    </h3>
-                    <ul className="mt-4 space-y-1.5 list-none ml-0">
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="/privacy"
-                        >
-                          Privacy Policy
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="/terms"
-                        >
-                          Terms of Service
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-12 md:!mt-0">
-                    <h3 className="text-sm text-black dark:text-white">
-                      Support
-                    </h3>
-                    <ul className="mt-4 space-y-1.5 list-none ml-0">
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="https://github.com/vercel/turbo"
-                        >
-                          GitHub
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="text-sm text-[#666666] dark:text-[#888888] no-underline betterhover:hover:text-gray-700 betterhover:hover:dark:text-white transition"
-                          href="https://turbo.build/discord"
-                        >
-                          Discord
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-12 xl:!mt-0">
-                <h3 className="text-sm text-black dark:text-white">
-                  Subscribe to our newsletter
-                </h3>
-                <p className="mt-4 text-sm text-gray-600 dark:text-[#888888]">
-                  Subscribe to the Turbo newsletter and stay updated on new
-                  releases and features, guides, and case studies.
-                </p>
-                <form className="mt-4 sm:flex sm:max-w-md">
-                  <label className="sr-only" htmlFor="email-address">
-                    Email address
-                  </label>
-                  <input
-                    autoComplete="email"
-                    className="border-[#666666] dark:border-[#888888] w-full min-w-0 px-4 py-2 text-base text-gray-900 placeholder-gray-500 bg-white border rounded-md appearance-none dark:text-white sm:text-sm dark:bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:border-white focus:placeholder-gray-400"
-                    id="email-address"
-                    name="email-address"
-                    placeholder="you@example.com"
-                    type="email"
-                    defaultValue=""
-                  />
-                  <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                    <button
-                      className="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-black border border-transparent rounded-md dark:bg-white dark:text-black sm:text-sm betterhover:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-800 dark:focus:ring-white dark:betterhover:hover:bg-gray-300"
-                      type="submit"
-                    >
-                      Subscribe
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div className="pt-8 mt-8 sm:flex sm:items-center sm:justify-between">
-              <div>
-                <a
-                  className="text-current"
-                  href="https://vercel.com?utm_source=turbo.build&utm_medium=referral&utm_campaign=footer-logoLink"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  title="vercel.com homepage"
+    <footer className="bg-[#242323] text-white dark:bg-gray-900">
+      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div className="md:flex md:justify-between">
+          <div className="mb-6 w-full lg:w-3/6 md:mb-0">
+            <Link href="/submit" className="flex items-center">
+              <img src="/logo.png" className="h-24 me-3" alt="FlowBite Logo" />
+            </Link>
+            <p className="py-4  text-base font-semibold">
+              The Mirella and Lino Saputo Foundation is a private Canadian
+              charitable foundation based in Montreal, established under the
+              Canadian Not-for-Profit Corporations Act and the Income Tax Act
+              (Canada).
+            </p>
+            <hr className="border" />
+            <div className="py-6 space-y-4">
+              <div className="flex items-center gap-6">
+                <svg
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg fill="none" height={20} viewBox="0 0 283 64">
-                    <title>Vercel</title>
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
                     <path
-                      d="M141.04 16c-11.04 0-19 7.2-19 18s8.96 18 20 18c6.67 0 12.55-2.64 16.19-7.09l-7.65-4.42c-2.02 2.21-5.09 3.5-8.54 3.5-4.79 0-8.86-2.5-10.37-6.5h28.02c.22-1.12.35-2.28.35-3.5 0-10.79-7.96-17.99-19-17.99zm-9.46 14.5c1.25-3.99 4.67-6.5 9.45-6.5 4.79 0 8.21 2.51 9.45 6.5h-18.9zM248.72 16c-11.04 0-19 7.2-19 18s8.96 18 20 18c6.67 0 12.55-2.64 16.19-7.09l-7.65-4.42c-2.02 2.21-5.09 3.5-8.54 3.5-4.79 0-8.86-2.5-10.37-6.5h28.02c.22-1.12.35-2.28.35-3.5 0-10.79-7.96-17.99-19-17.99zm-9.45 14.5c1.25-3.99 4.67-6.5 9.45-6.5 4.79 0 8.21 2.51 9.45 6.5h-18.9zM200.24 34c0 6 3.92 10 10 10 4.12 0 7.21-1.87 8.8-4.92l7.68 4.43c-3.18 5.3-9.14 8.49-16.48 8.49-11.05 0-19-7.2-19-18s7.96-18 19-18c7.34 0 13.29 3.19 16.48 8.49l-7.68 4.43c-1.59-3.05-4.68-4.92-8.8-4.92-6.07 0-10 4-10 10zm82.48-29v46h-9V5h9zM36.95 0L73.9 64H0L36.95 0zm92.38 5l-27.71 48L73.91 5H84.3l17.32 30 17.32-30h10.39zm58.91 12v9.69c-1-.29-2.06-.49-3.2-.49-5.81 0-10 4-10 10V51h-9V17h9v9.2c0-5.08 5.91-9.2 13.2-9.2z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </a>
-                <p className="mt-4 text-xs text-gray-500 dark:text-[#888888]">
-                  © {/* */}2023{/* */} Vercel, Inc. All rights reserved.
-                </p>
+                      d="M18 9V6M18 6V3M18 6H15M18 6H21M18.5 21C9.93959 21 3 14.0604 3 5.5C3 5.11378 3.01413 4.73086 3.04189 4.35173C3.07375 3.91662 3.08968 3.69907 3.2037 3.50103C3.29814 3.33701 3.4655 3.18146 3.63598 3.09925C3.84181 3 4.08188 3 4.56201 3H7.37932C7.78308 3 7.98496 3 8.15802 3.06645C8.31089 3.12515 8.44701 3.22049 8.55442 3.3441C8.67601 3.48403 8.745 3.67376 8.88299 4.05321L10.0491 7.26005C10.2096 7.70153 10.2899 7.92227 10.2763 8.1317C10.2643 8.31637 10.2012 8.49408 10.0942 8.64506C9.97286 8.81628 9.77145 8.93713 9.36863 9.17882L8 10C9.2019 12.6489 11.3501 14.7999 14 16L14.8212 14.6314C15.0629 14.2285 15.1837 14.0271 15.3549 13.9058C15.5059 13.7988 15.6836 13.7357 15.8683 13.7237C16.0777 13.7101 16.2985 13.7904 16.74 13.9509L19.9468 15.117C20.3262 15.255 20.516 15.324 20.6559 15.4456C20.7795 15.553 20.8749 15.6891 20.9335 15.842C21 16.015 21 16.2169 21 16.6207V19.438C21 19.9181 21 20.1582 20.9007 20.364C20.8185 20.5345 20.663 20.7019 20.499 20.7963C20.3009 20.9103 20.0834 20.9262 19.6483 20.9581C19.2691 20.9859 18.8862 21 18.5 21Z"
+                      stroke="#ed4b4b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+                <h3 className="text-base font-bold">666 888 0000</h3>
+              </div>
+              <div className="flex items-center gap-6">
+                <svg
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M14.5 9.50012H9.5M3.02832 10.0001L10.2246 14.8167C10.8661 15.2444 11.1869 15.4582 11.5336 15.5413C11.8399 15.6147 12.1593 15.6147 12.4657 15.5413C12.8124 15.4582 13.1332 15.2444 13.7747 14.8167L20.971 10.0001M10.2981 4.06892L4.49814 7.71139C3.95121 8.05487 3.67775 8.2266 3.4794 8.45876C3.30385 8.66424 3.17176 8.90317 3.09111 9.16112C3 9.45256 3 9.77548 3 10.4213V16.8001C3 17.9202 3 18.4803 3.21799 18.9081C3.40973 19.2844 3.71569 19.5904 4.09202 19.7821C4.51984 20.0001 5.0799 20.0001 6.2 20.0001H17.8C18.9201 20.0001 19.4802 20.0001 19.908 19.7821C20.2843 19.5904 20.5903 19.2844 20.782 18.9081C21 18.4803 21 17.9202 21 16.8001V10.4213C21 9.77548 21 9.45256 20.9089 9.16112C20.8282 8.90317 20.6962 8.66424 20.5206 8.45876C20.3223 8.2266 20.0488 8.05487 19.5019 7.71139L13.7019 4.06891C13.0846 3.68129 12.776 3.48747 12.4449 3.41192C12.152 3.34512 11.848 3.34512 11.5551 3.41192C11.224 3.48747 10.9154 3.68129 10.2981 4.06892Z"
+                      stroke="#ed4b4b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+                <h3 className="text-base font-bold">needhelp@azino.com</h3>
+              </div>
+              <div className="flex items-center gap-6">
+                <svg
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M12 13V7M15 10.0008L9 10M19 10.2C19 14.1764 15.5 17.4 12 21C8.5 17.4 5 14.1764 5 10.2C5 6.22355 8.13401 3 12 3C15.866 3 19 6.22355 19 10.2Z"
+                      stroke="#ed4b4b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
+                <h3 className="text-base font-bold">info@fmlsaputo.org</h3>
               </div>
             </div>
           </div>
+          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
+                Explore
+              </h2>
+              <ul className="text-gray-300 dark:text-gray-400 font-medium">
+                {menuItems.map((item) => (
+                  <li key={item.id} className="mb-4">
+                    <a href={item.link} className="hover:underline">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
+                Contact us
+              </h2>
+              <ul className="text-gray-300 dark:text-gray-400 font-medium">
+                <li className="mb-4">
+                  <a href={"/"} className="hover:underline">
+                    info@fmlsaputo.org
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <div className="sm:flex sm:items-center sm:justify-between">
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            Created by La Clique des comm – communications office dedicated to
+            NPOs
+            <br />
+            This site meets accessibility standards respecting WCAG 2.1
+            standards
+          </span>
         </div>
       </div>
     </footer>

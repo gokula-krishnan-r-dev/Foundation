@@ -25,37 +25,38 @@ export const json = {
 
 import { endPoint } from "../dev";
 import { SuccessModel } from "./SuccessModel";
+import { toast } from "sonner";
 export const SubmitData = [
   {
-    tag: "firstname*",
+    tag: "firstname",
     placeholder: "First Name",
     type: "text",
     description: "Enter your First Name",
     required: true,
   },
   {
-    tag: "lastname*",
+    tag: "lastname",
     placeholder: "Last Name",
     type: "text",
     description: "Enter your Last Name",
     required: true,
   },
   {
-    tag: "title*",
+    tag: "title",
     placeholder: "Title",
     type: "text",
     description: "Enter your Title",
-    required: true,
+    required: false,
   },
   {
-    tag: "email*",
+    tag: "email",
     placeholder: "Email Address",
     type: "email",
     description: "Enter your Email Address",
     required: true,
   },
   {
-    tag: "address*",
+    tag: "address",
     placeholder: "Mailing Address",
     type: "text",
     description: "Enter your Mailing Address",
@@ -70,7 +71,7 @@ export const SubmitData = [
     required: true,
   },
   {
-    tag: "projectTitle*",
+    tag: "projectTitle",
     placeholder:
       "The name of the specific project or program you're seeking funding for",
     type: "text",
@@ -79,7 +80,7 @@ export const SubmitData = [
     required: true,
   },
   {
-    tag: "projectDescription*",
+    tag: "projectDescription",
     placeholder:
       "A brief overview of the project, including its objectives and significance.",
     type: "text",
@@ -88,7 +89,7 @@ export const SubmitData = [
     required: true,
   },
   {
-    tag: "targetPopulation*",
+    tag: "targetPopulation",
     placeholder:
       "Who will benefit from the project (e.g., children, the elderly, a specific community).",
     type: "text",
@@ -96,7 +97,7 @@ export const SubmitData = [
     description: "Enter your Target Population",
   },
   {
-    tag: "projectLocation*",
+    tag: "projectLocation",
     placeholder: "Where the project will be implemented",
     type: "text",
     area: "textarea",
@@ -104,7 +105,7 @@ export const SubmitData = [
     required: true,
   },
   {
-    tag: "totalProjectBudget*",
+    tag: "totalProjectBudget",
     placeholder: "An overview of the total cost of the project.",
     type: "text",
     area: "textarea",
@@ -112,7 +113,7 @@ export const SubmitData = [
     required: true,
   },
   {
-    tag: "amountRequested*",
+    tag: "amountRequested",
     placeholder: "The specific amount you are requesting from the donor.",
     type: "text",
     area: "textarea",
@@ -120,7 +121,7 @@ export const SubmitData = [
     required: true,
   },
   {
-    tag: "otherFundingSources*",
+    tag: "otherFundingSources",
     placeholder:
       "Information about other funding you have received or are seeking for this project.",
     type: "text",
@@ -130,8 +131,9 @@ export const SubmitData = [
   },
   {
     type: "title",
-    tag: "title",
+    tag: "SubTitle",
     title: "Additional Documents  (if applicable)",
+    required: false,
   },
   {
     tag: "references",
@@ -143,8 +145,9 @@ export const SubmitData = [
   },
   {
     type: "title",
-    tag: "title",
+    tag: "SubTitle",
     title: "Consent and Verification",
+    required: false,
   },
   {
     tag: "consentFunds",
@@ -163,17 +166,17 @@ export const SubmitData = [
     required: false,
   },
   {
-    tag: "contactPerson*",
+    tag: "contactPerson",
     placeholder: "Primary Contact Person",
     type: "text",
     description: "Enter Primary Contact Person Information",
     required: true,
   },
   {
-    tag: "refCode*",
-    placeholder: "refCode ",
+    tag: "refCode",
+    placeholder: "Enter Reference code e.g. 123456",
     type: "text",
-    description: "Enter refCode",
+    description: "Enter Reference code e.g. 123456",
     required: true,
   },
 ];
@@ -198,6 +201,7 @@ export function ProfileForm() {
       SubmitData.map((value: any) => [value.tag, ""])
     ),
   });
+  const [loading, setLoading] = useState<boolean>(false);
   const [formSubmitSuccess, setFormSubmitSuccess] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [addsign, setAddsign] = useState<any>("");
@@ -235,7 +239,8 @@ export function ProfileForm() {
               .integer()
               .required(`${field.placeholder} must be a number`);
             break;
-
+          case "title":
+            break;
           default:
             schemaObject[field.tag] = yup
               .string()
@@ -259,31 +264,48 @@ export function ProfileForm() {
   console.log(errors, "errors");
 
   const onSubmit = (data: any) => {
+    setLoading(true);
     const formData: any = new FormData();
     Object.keys(data).forEach((key) => {
       if (data[key] instanceof FileList) {
         // Handle file inputs separately
-        formData.append(`files`, data[key][0]);
+        formData.append(`files`, data[key]);
         console.log(data[key][0], "formData");
       } else {
         formData.append(key, data[key]);
       }
     });
 
-    const response: any = axios.post(
-      `${endPoint}/submit-form?key=f70c7525463c`,
-      formData,
-      {
+    axios
+      .post(`${endPoint}/submit-form?key=f70c7525463c`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-      }
-    );
-    console.log(response, "response");
-
-    // Use fetch or any other method to send formData to your API
+      })
+      .then((response) => {
+        setLoading(false);
+        console.log(response, "response");
+        if (response.data.code === 201) {
+          setFormSubmitSuccess(true);
+          toast.success(response.data.message || "Somthing went wrong!");
+        } else {
+          // setEmailError(true);
+          toast.error(response.data.message || "Somthing went wrong!");
+        }
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Error submitting form:", error);
+        // setEmailError(true);
+      });
   };
-
+  if (loading) {
+    return (
+      <div className="h-screen z-[999] fixed inset-0  flex items-center justify-center mx-auto w-full bg-white">
+        <img src="/Loading.gif" alt="" />
+      </div>
+    );
+  }
   return (
     <div className="relative">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -291,10 +313,7 @@ export function ProfileForm() {
           setFormSubmitSuccess={setFormSubmitSuccess}
           formSubmitSuccess={formSubmitSuccess}
         />
-        <SuccessModel
-          setFormSubmitSuccess={setEmailError}
-          formSubmitSuccess={emailError}
-        />
+
         {SubmitData.map((value, index) => (
           <div key={index} className="flex mt-8 flex-col">
             {value.type === "title" ? (

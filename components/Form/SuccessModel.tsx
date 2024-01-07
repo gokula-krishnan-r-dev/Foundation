@@ -33,7 +33,8 @@ export function SuccessModel({ formSubmitSuccess, setFormSubmitSuccess }: any) {
               <div className="relative p-4 w-full max-w-md h-full md:h-auto">
                 {/* Modal content */}
                 <div className="relative p-4 text-center bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
-                  <button
+                  <Link
+                    href={"/submit"}
                     type="button"
                     className="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                     data-modal-toggle="successModal"
@@ -52,7 +53,7 @@ export function SuccessModel({ formSubmitSuccess, setFormSubmitSuccess }: any) {
                       />
                     </svg>
                     <span className="sr-only">Close modal</span>
-                  </button>
+                  </Link>
 
                   <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 p-2 flex items-center justify-center mx-auto mb-3.5">
                     <svg
@@ -82,7 +83,7 @@ export function SuccessModel({ formSubmitSuccess, setFormSubmitSuccess }: any) {
                   </p>
                   <div className="flex items-center justify-center pt-6">
                     <Link
-                      href="/"
+                      href="/submit"
                       className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-[#9333ea]/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
                     >
                       <span className="relative text-base font-semibold text-primary dark:text-white">

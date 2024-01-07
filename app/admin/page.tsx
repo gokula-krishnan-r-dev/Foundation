@@ -45,7 +45,7 @@ const Admin = () => {
   const [tab, setTab] = useState("Application");
 
   return (
-    <div className="px-16">
+    <div className="px-16 pt-24">
       <section className=" flex items-center justify-between">
         <div className="">
           <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
